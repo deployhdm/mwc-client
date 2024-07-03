@@ -1,0 +1,196 @@
+.modalMiddleScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .contentModalMiddleScreen {
+    width:305px;
+    height:425px;
+    background-color: #7B7B7B;
+    &.medium {
+      width:515px;
+      height:650px;
+    }
+    &.hard {
+      width:935px;
+      height:650px;
+    }
+    .topBar {
+      justify-content: space-between;
+      .menuTopBar {
+        display: flex;
+        margin-left: 10px;
+        .optionMenuFiles{
+          margin-right: 25px;
+          position:relative;
+          &.selected{
+            background-color: #3793AF;
+          }
+          h3 {
+            color:white;
+          }
+        }
+        .optionMenuHighScore{
+          margin-right: 25px;
+          position:relative;
+          &.selected{
+            background-color: #3793AF;
+          }
+          h3 {
+            color:white;
+          }
+        }
+        .filesMenu {
+          position:absolute;
+          top:30px;
+          width:150px;
+          background-color: white;
+          padding-top: 5px;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-bottom: 15px;
+          h2 {
+            color: black;
+            font-weight: bold;
+            margin-bottom: 5px;
+          }
+          div{
+            &:hover{
+              background-color: #6BDBCB;
+            }
+          }
+        }
+      }
+    }
+    .demineur {
+      margin: 0 auto;
+      width: 303px;
+      height: 393px;
+      background-color: #BDBDBD;
+      border: 1px ridge #E7E7E7;
+      border-radius: 0 0 10px 10px;
+      &.medium {
+        width:513px;
+        height:618px;
+      }
+      &.hard {
+        width:933px;
+        height:618px;
+      }
+      .menu {
+        margin-top: 15px;
+        margin-right: 11.5px;
+        margin-left: 12px;
+        height: 70px;
+        border: 5px ridge #E7E7E7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #BDBDBD;
+        .numberBombRest {
+          background-color: black;
+          color:#FF0000;
+          margin-left: 10px;
+          display: flex;
+          align-items: center;
+          font-size: 25px;
+        }
+        .smileys {
+          width:53px;
+          height:53px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-image: url("/assets/image/mineRestart.png");
+        }
+        .time {
+          background-color: black;
+          color:#FF0000;
+          margin-right: 10px;
+          display: flex;
+          align-items: center;
+          font-size: 25px;
+        }
+      }
+
+      .gamePad {
+        margin-top: 15px;
+        width: 278px;
+        height: 278px;
+        margin-right: 12px;
+        margin-left: 12px;
+        border: 4px ridge #E7E7E7;
+        &.medium{
+          width:488px;
+          height:488px;
+        }
+        &.hard{
+          width:908px;
+          height:488px;
+        }
+        ul {
+          li{
+            display: flex;
+            .line {
+              display: flex;
+              .unknown {
+                width: 30px;
+                height: 30px;
+                background-image: url("/assets/image/unknown.png");
+              }
+              .flag {
+                width: 30px;
+                height: 30px;
+                background-image: url("/assets/image/flag.png");
+              }
+              .interrogation {
+                width: 30px;
+                height: 30px;
+                background-image: url("/assets/image/interrogation.png");
+              }
+              .bomb {
+                width: 30px;
+                height: 30px;
+                background-image: url("/assets/image/bomb.png");
+              }
+              .number {
+                width: 30px;
+                height: 30px;
+                background-image: url("/assets/image/reveal.png");
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "MS Sans Serif", sans-serif;
+                font-weight: bold;
+                font-size: 20px;
+              }
+              .number1 {
+                color:#0000FF;
+              }
+              .number2 {
+                color:#008000;
+              }
+              .number3 {
+                color:#FF0000;
+              }
+              .number4 {
+                color:#000080;
+              }
+              .number5 {
+                color:#800000;
+              }
+              .number6 {
+                color:#008080;
+              }
+              .number7 {
+                color:#FFC0CB;
+              }
+              .number8{
+                color:#7E7E7E;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

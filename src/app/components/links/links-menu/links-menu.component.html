@@ -1,0 +1,62 @@
+<div class="groupLinksContainer">
+  <div class="titleContainer">
+    <h2>FAVORIS</h2>
+    <div (click)="displayScrollingMenu()">...</div>
+    <ul class="scrollingMenu" *ngIf="scrollingMenu">
+      <li (click)="displayAll()">Afficher tout</li>
+    </ul>
+  </div>
+  <div class="groupLinksList">
+
+    <div [ngClass]="addGroupLinksClass" (click)="createForm()">
+      <h4 *ngIf="!isCreateForm">Crée un groupe de liens</h4>
+      <img src="assets/image/add.png" alt="add"  *ngIf="!isCreateForm" />
+
+      <h4 *ngIf="isCreateForm">Nom de votre<br/>groupe de liens :</h4>
+      <input type="text" [(ngModel)]="createGroupLinksTitle" *ngIf="isCreateForm" class="inputCreate">
+      <button *ngIf="isCreateForm" (click)="addGroupLinks()" class="buttonCreate" [disabled]="!createGroupLinksTitle">Créer</button>
+    </div>
+
+    <div class="groupLinksCard">
+      <div class="titleGroupLink">
+        <h3>Hotlink</h3>
+      </div>
+
+      <ul *ngFor="let link of hotLinkList" class="linksContainer">
+        <li><a href="{{link.link}}" (click)="clickOnLink(link.id)" target="_blank">{{link.name}}</a></li>
+      </ul>
+    </div>
+
+    <div *ngFor="let groupLinks of groupLinksList" class="groupLinksCard">
+      <div class="titleGroupLink">
+        <h3>{{groupLinks.name}}</h3>
+        <div (click)="menuDisplay(groupLinks.id)" *ngIf="groupLinks?.permissionLevel !== 'READ'">
+          <ion-icon name="add-circle-sharp"></ion-icon>        
+        </div>
+        <ul class="scrollingMenu" *ngIf="isThatMenuDisplay(groupLinks.id)">
+          <li (click)="tryAddALink(groupLinks.id)" [attr.title]="'Ajouter lien'" class="tooltip">
+            <ion-icon name="add-sharp"></ion-icon>
+            <span class="tooltiptext">Ajouter lien</span>
+          </li>
+          <li (click)="adminGroupLinks(groupLinks.id, groupLinks.permissionLevel)"  [attr.title]="'Gérer le groupe'" class="tooltip">
+            <ion-icon name="cog-sharp"></ion-icon>
+            <span class="tooltiptext">Gérer le groupe</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="addOneLink" *ngIf="isTryingToAddALink(groupLinks.id)">
+        <div class="closeAdd" (click)="closeAddLink(groupLinks.id)">X</div>
+        <h4>Ajouter un lien</h4>
+        <input placeholder="Nom du lien" *ngIf="selectAddLink(groupLinks.id)" [(ngModel)]="selectAddLink(groupLinks.id).name">
+        <input placeholder="Adresse du lien" *ngIf="selectAddLink(groupLinks.id)" [(ngModel)]="selectAddLink(groupLinks.id).link">
+        <button (click)="createLink(groupLinks.id)" [disabled]="checkIfCanCreateLink(groupLinks.id)">Ajouter</button>
+      </div>
+
+      <ul *ngFor="let link of linksList | filterLinksByGroup:groupLinks.id" class="linksContainer">
+        <li><a href="{{link.link}}" (click)="clickOnLink(link.id)" target="_blank">{{link.name}}</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>

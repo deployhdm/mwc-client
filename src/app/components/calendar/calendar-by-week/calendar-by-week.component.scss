@@ -1,0 +1,111 @@
+.calendarDate {
+  display:flex;
+  width:100%;
+  flex-direction: column;
+  .titleContainer{
+    @media (min-width: 0) {
+      display: none;
+    }
+    @media (min-width: 1000px) {
+      display: flex;
+    }
+    width:100%;
+    border:1px solid #3A406E;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    .title{
+      width:14%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      div{
+        &:first-child{
+          margin-bottom: 0.6rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .eventContainer{
+    display: flex;
+    width:100%;
+    border:1px solid #3A406E;
+    margin-bottom: 4rem;
+    @media (min-width: 0) {
+      flex-direction: column;
+    }
+    @media (min-width: 1000px) {
+      flex-direction: row;
+    }
+    .oneDate {
+      @media (min-width: 0) {
+        width:96%;
+        margin : 0 auto;
+      }
+      @media (min-width: 1000px) {
+        width:14%;
+        margin : 0;
+      }
+      display: flex;
+      flex-direction: column;
+      .allEventForOneDay {
+        @media (min-width: 0) {
+          width:96%;
+          margin : 0 auto;
+          border:1px solid #3A406E;
+          margin-top: 1rem;
+        }
+        @media (min-width: 1000px) {
+          width:100%;
+          margin : 0;
+          border: 0;
+        }
+        .titleContainerSmall {
+          @media (min-width: 0) {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #3A406E;
+          }
+          @media (min-width: 1000px) {
+            display: none;
+          }
+        }
+        .oneEventOdd {
+          height:60px;
+          margin-bottom: 0.5rem;
+          padding-top: 5px;
+          padding-left: 5px;
+          &:nth-child(odd) {
+            background-color: #eeeeee;
+          }
+          .date {
+            font-size: 0.9rem;
+          }
+        }
+        .oneEventEven {
+          height:60px;
+          margin-bottom: 0.5rem;
+          padding-top: 5px;
+          padding-left: 5px;
+          &:nth-child(even) {
+            background-color: #eeeeee;
+          }
+          .date {
+            font-size: 0.9rem;
+          }
+        }
+        .oneEventHide {
+          height:2px;
+        }
+      }
+    }
+  }
+}
+
+.bottom {
+  height: 500px;
+}

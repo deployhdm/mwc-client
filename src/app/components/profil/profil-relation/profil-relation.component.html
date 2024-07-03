@@ -1,0 +1,90 @@
+<div class="container">
+
+  <div class="addInvitation">
+    <h1>Envoyer une invitation</h1>
+    <div class="addForm">
+      <input type="text" placeholder="email de votre contact" [(ngModel)]="emailGuest">
+      <button (click)="sendInvitation()">Envoyer</button>
+    </div>
+  </div>
+
+  <div class="relationContainer">
+  <div class="myRelation">
+    <h1>Mes relations</h1>
+    <ul *ngIf="relation.length > 0">
+      <li *ngFor="let friend of relation">
+          <div>
+            <img src="/assets/image/profilOld.png" alt="photo">
+          </div>
+          <div>
+            <div class="name">{{friend.firstname}} {{friend.lastname}}</div>
+            <div class="email">{{friend.email}}</div>
+          </div>
+          <div class="menu">
+            <div (click)="menuDisplay(friend.id)">...</div>
+            <ul class="scrollingMenu" *ngIf="isMenuMyRelationsDisplay(friend.id)">
+              <li (click)="deleteRelation(friend.id)">Supprimer</li>
+            </ul>
+          </div>
+      </li>
+    </ul>
+    <div class="noRelation" *ngIf="relation.length === 0">
+      Vous n'avez pas de relation
+    </div>
+  </div>
+
+  <div class="myRelation">
+    <h1>Mes invitations</h1>
+
+    <h2>Invitations reçues</h2>
+    <ul *ngIf="invitationReceive && invitationReceive[0] && invitationReceive[0].id !== null">
+      <li *ngFor="let friend of invitationReceive">
+        <div>
+          <img src="/assets/image/profilOld.png" alt="photo">
+        </div>
+        <div>
+          <div class="name">{{friend.firstname}} {{friend.lastname}}</div>
+          <div class="email">{{friend.email}}</div>
+        </div>
+        <div class="menu">
+          <div (click)="menuInvitationReceiveDisplay(friend.id)">...</div>
+          <ul class="scrollingMenu" *ngIf="isMenuInvitationsReceiveDisplay(friend.id)">
+            <li (click)="acceptInvitation(friend.id)">Accepter</li>
+            <li (click)="refuseInvitation(friend.id)">Refuser</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div class="noRelation" *ngIf="invitationReceive && invitationReceive[0] && invitationReceive[0].id === null">
+      Vous n'avez pas d'invitations reçues en attente
+    </div>
+
+    <div class="separator"></div>
+
+    <h2>Invitations envoyées</h2>
+    <ul *ngIf="invitationSend.length > 0">
+      <li *ngFor="let friend of invitationSend">
+        <div>
+          <img src="/assets/image/profilOld.png" alt="photo">
+        </div>
+        <div>
+          <div class="email">{{friend.reiceverInvitationEmail}}</div>
+        </div>
+        <div class="menu">
+          <div (click)="menuInvitationSendDisplay(friend.id)">...</div>
+          <ul class="scrollingMenu" *ngIf="isMenuInvitationsSendDisplay(friend.id)">
+            <li (click)="deleteInvitation(friend.id)">Annuler</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div class="noRelation" *ngIf="invitationSend.length === 0">
+      Vous n'avez pas d'invitations reçues en attente
+    </div>
+
+    <div class="separator"></div>
+  </div>
+  </div>
+
+  <div class="separator"></div>
+</div>

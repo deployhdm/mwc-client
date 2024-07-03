@@ -1,0 +1,24 @@
+<div class="menu">
+
+  <div class="link">
+    <img [src]="homeImg" alt="home">
+    <a (click)="menuChoose('accueil')" (mouseenter)="changeImage('home')" (mouseleave)="changeImage('home')">
+      Retour à l'accueil
+    </a>
+  </div>
+
+  <div [class]="linkInformation">
+    <img [src]="informationImg" alt="home">
+    <a (click)="menuChoose('information')" (mouseenter)="changeImage('information')" (mouseleave)="changeImage('information')">
+      Informations personnelles
+    </a>
+  </div>
+
+  <div [class]="linkRelation">
+    <img [src]="relationImg" alt="relation">
+    <a (click)="menuChoose('relation')" (mouseenter)="changeImage('relation')" (mouseleave)="changeImage('relation')">
+      Mes relations
+    </a>
+  </div>
+
+</div>

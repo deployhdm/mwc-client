@@ -1,0 +1,58 @@
+.container {
+  margin:0 auto;
+  margin-top: 1rem;
+  @media (min-width:0) {
+    width:90%;
+  }
+  @media (min-width:900px) {
+    width:70%;
+  }
+  h1 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    text-align: center;
+    @media (min-width:0) {
+      font-size: 1.6rem;
+    }
+    @media (min-width:700px) {
+      font-size: 2rem;
+    }
+  }
+  h2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    @media (min-width:0) {
+      font-size: 1.6rem;
+    }
+    @media (min-width:700px) {
+      font-size: 2rem;
+    }
+  }
+  .nameInformation {
+    display: flex;
+    flex-direction: column;
+    border:1px solid #3a3a3a;
+    div {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      font-size: 1.3rem;
+      &:first-child{
+        margin-top: 3rem;
+      }
+    }
+    input {
+      margin-left: 2rem;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+    }
+    button {
+      border-radius: 0;
+    }
+  }
+}

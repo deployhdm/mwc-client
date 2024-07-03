@@ -1,0 +1,23 @@
+.container {
+  margin-top: 5px;
+  height: 70px;
+  h2 {
+    background-color: #3A406E;
+    color:white;
+    height:24px;
+    padding-top: 3px;
+    padding-left: 10px;
+  }
+  ul {
+    height:40px;
+    display: flex;
+    align-items: center;
+    background-color: #eeeeee;
+    li {
+      height:30px;
+      margin-left: 10px;
+      background-color: #eeeeee;
+    }
+  }
+
+}

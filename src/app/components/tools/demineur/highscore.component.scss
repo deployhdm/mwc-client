@@ -1,0 +1,97 @@
+.modalHighScore {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  z-index: 3500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3A406EAA;
+  .contentModalHighScore{
+    @media (min-width: 0) {
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+      margin-right: 1px;
+      margin-left: 1px;
+      height: 96vh;
+    }
+    @media (min-width: 330px) {
+      margin-top: 4vh;
+      margin-bottom: 4vh;
+      margin-right: 4%;
+      margin-left: 4%;
+      height: 92vh;
+    }
+    @media (min-width: 440px) {
+      margin-top: 8vh;
+      margin-bottom: 8vh;
+      margin-right: 8%;
+      margin-left: 8%;
+      height: 84vh;
+    }
+    @media (min-width: 740px) {
+      margin-top: 14vh;
+      margin-bottom: 14vh;
+      margin-right: 15%;
+      margin-left: 15%;
+      height: 72vh;
+    }
+    @media (min-width: 1600px) {
+      margin-top: 20vh;
+      margin-bottom: 20vh;
+      margin-right: 20%;
+      margin-left: 20%;
+      height: 60vh;
+    }
+    background-color: white;
+    border-radius: 10px;
+    border:1px solid white;
+    width:400px;
+    .topBar {
+      height: 30px;
+      line-height: 30px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: #3A406E ;
+      border-radius: 10px 10px 0 0;
+      span {
+        margin-right: 1rem;
+        color:white;
+        background-color: #3a3a3a;
+        border-radius: 50%;
+        height:20px;
+        width:20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    h2 {
+      margin: 2rem auto;
+      font-size: 25px;
+      font-weight: bold;
+      width:100%;
+      text-align: center;
+    }
+    ul {
+      li {
+        display: flex;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        .ranking{
+          width:30px;
+          font-weight: bold;
+        }
+        .score{
+          flex:1;
+          text-align: right;
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}

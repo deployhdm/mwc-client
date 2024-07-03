@@ -1,0 +1,88 @@
+@mixin mediaQueryWidthModal {
+  @media (min-width: 0) {
+    margin: 0 auto;
+    width: 95%;
+  }
+  @media (min-width: 500px) {
+    margin: 0 auto;
+    width: 90%;
+  }
+  @media (min-width: 1400px) {
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.modalMiddleScreen {
+  .contentModalMiddleScreen {
+    .chooseEvent {
+      @include mediaQueryWidthModal;
+      margin-bottom: 1rem !important;
+      display: flex;
+      div{
+        margin-right: 1rem;
+        padding:0.5rem;
+        border: 1px solid #2a2a2a;
+        &.selected {
+          background-color: #3793AF;
+          color:white;
+        }
+      }
+    }
+    .descriptionContainer {
+      @include mediaQueryWidthModal;
+      margin-bottom: 1rem !important;
+      textarea {
+        width:100%;
+        height:110px;
+      }
+    }
+
+    .recurrentContainer {
+      @include mediaQueryWidthModal;
+      display: flex;
+      margin-bottom: 1.5rem !important;
+      flex-flow: row wrap;
+      select {
+        margin-right: 5px;
+        margin-left: 10px;
+      }
+    }
+
+    .addRelationContainer{
+      @include mediaQueryWidthModal;
+      display:flex;
+      align-items: center;
+      img {
+        width:17px;
+        height:17px;
+        margin-right: 5px;
+      }
+    }
+
+    .relationContainer {
+      @include mediaQueryWidthModal;
+      display: flex;
+      margin-bottom: 1.5rem !important;
+      .listParticipant {
+        .participant{
+          margin-right: 7px;
+          background-color: #6BDBCB55;
+          padding: 0.2rem;
+          border-radius: 5%;
+        }
+      }
+    }
+
+    .buttonContainer {
+      @include mediaQueryWidthModal;
+      display: flex;
+      justify-content: center;
+      .deleteButton {
+        margin-left: 3rem;
+        background-color: red;
+        color:white;
+      }
+    }
+  }
+}

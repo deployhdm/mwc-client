@@ -1,0 +1,31 @@
+<ion-content>
+  <app-header></app-header>
+  <div class="authentication">
+
+    <div class="authenticationLeft">
+      <img src="assets/image/woman-with-laptop.svg" alt="" />
+    </div>
+
+    <div class="authenticationCenter">
+      <h2>Connexion à votre compte</h2>
+      <div class="form">
+        <input type="text" [(ngModel)]="email" placeholder="Email" class="inputFullWidth">
+        <input type="password" [(ngModel)]="password" placeholder="Mot de passe" class="inputFullWidth">
+        <div class="passwordForgotten">
+          <a routerLink="../reset-password">Mot de passe oublié ?</a>
+        </div>
+        <button (click)="makeConnexion()" [disabled]="checkIfEmpty()">Connexion</button>
+      </div>
+      <div class="toSubscription">
+        Pas encore inscrit ?&nbsp;<a routerLink="../inscription">S'inscrire</a>
+      </div>
+    </div>
+
+    <div class="authenticationRight">
+      <img src="assets/image/man-reads-paper.svg" alt="" />
+    </div>
+
+  </div>
+  <app-footer></app-footer>
+</ion-content>
+

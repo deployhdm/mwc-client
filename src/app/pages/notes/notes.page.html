@@ -1,0 +1,70 @@
+<ion-content>
+  <app-header></app-header>
+  <br/>
+  <a routerLink="/home">Retour à l'accueil</a>
+  
+  <div class="container">
+    <div class="contentContainer">
+      <div class="titleContainer">
+        Titre :
+        <input *ngIf="note" [(ngModel)]="note.title" (ngModelChange)="permissionLevel !== 'READ' && changeNote()" [readonly]="permissionLevel === 'READ'">
+      </div>
+    
+      <div class="textContainer">
+        Contenu :
+        <textarea *ngIf="note" [(ngModel)]="note.content" (ngModelChange)="permissionLevel !== 'READ' && changeNote()" [readonly]="permissionLevel === 'READ'"></textarea>
+      </div>
+    </div>
+
+    <div class="share" *ngIf="(permissionLevel == 'WRITE_AND_SHARE' || permissionLevel == undefined)">
+      <div class="inviteSomeone">
+        <span>Inviter quelqu'un</span>
+        <div class="detailCollaborator">
+          <div class="insertEmail">
+            <input type="email" [(ngModel)]="email" placeholder="Saissisez l'email">
+          </div>
+          <div class="permissionOptions">
+            <select name="permission" [(ngModel)]="selectedPermission">
+              <option 
+                *ngFor="let key of getPermissionLevelKeys()" 
+                [value]="key">{{ permissions[key] }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="buttons" *ngIf="email">
+          <button type="button" (click)="onCancel()"> Annuler </button>
+          <button type="button" (click)="sendInvitation()"> Envoyer l'invitation </button>
+        </div>
+      </div>
+      <div class="sharedWith" *ngIf="collaborators">
+        <span>Qui a accès ? ({{ collaborators.length || 0 }})</span>
+        <div class="collaborator" *ngFor="let collaborator of collaborators">
+          <p>{{ collaborator.email }}</p>
+
+          <ion-button expand="block" fill="clear" size="small" 
+            (click)="toggleCollaboratorPermissionMenu(collaborator)">
+            <span *ngIf="collaborator.isUserRegistered; else notRegistered">
+                {{ getPermissionLevelValue(collaborator.permissionLevel) }}
+            </span>
+            <ng-template #notRegistered>
+                <span>en attente</span>
+            </ng-template>
+            <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
+          </ion-button>
+          <ion-list *ngIf="(collaborator.showMenu && permissionLevel == undefined)" >
+            <ion-item (click)="cancelInvitation(collaborator.email)">
+              <ion-label color="danger">Supprimer l'accès</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="deleteNote" *ngIf="(permissionLevel == undefined || permissionLevel.includes('Delete'))">
+    <button (click)="deleteNote()">Supprimer définitivement cette note</button>
+  </div>
+
+  <app-footer></app-footer>
+</ion-content>

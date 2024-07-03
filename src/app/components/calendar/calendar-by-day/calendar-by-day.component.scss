@@ -1,0 +1,66 @@
+.calendarDate {
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  margin-bottom: 4rem;
+  .titleContainer{
+    display: flex;
+    width:100%;
+    height: 70px;
+    border:1px solid #3A406E;
+    justify-content: center;
+    align-items: center;
+    .title{
+      list-style: none;
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+  .dayContainer {
+    display: flex;
+    flex-direction: column;
+    border:1px solid #3A406E;
+    min-height: 500px;
+    .event {
+      display: flex;
+      align-items: center;
+      height:60px;
+      &:nth-child(even) {
+        background-color: #eeeeee;
+      }
+      .date{
+        margin-left: 1rem;
+        font-size: 0.9rem;
+        @media (min-width: 0) {
+          width:140px;
+        }
+        @media (min-width: 745px) {
+          width:200px;
+        }
+      }
+      .title{
+
+        @media (min-width: 0) {
+          flex:1;
+        }
+        @media (min-width: 745px) {
+          width:30%;
+        }
+      }
+      .description{
+        flex:1;
+        @media (min-width: 0) {
+          display: none;
+        }
+        @media (min-width: 745px) {
+          display: flex;
+        }
+      }
+    }
+  }
+}

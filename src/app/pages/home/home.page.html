@@ -1,0 +1,12 @@
+<ion-content>
+  <app-header></app-header>
+  <div *ngIf="!isConnected">
+    <app-home-without-connection></app-home-without-connection>
+  </div>
+
+  <div *ngIf="isConnected">
+    <app-home-with-connection></app-home-with-connection>
+  </div>
+
+  <app-footer></app-footer>
+</ion-content>

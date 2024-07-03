@@ -1,0 +1,52 @@
+.calendarDate {
+  display:flex;
+  width:100%;
+  .dateContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    .oneDate{
+      list-style: none;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border:1px solid #3A406E;
+      height:250px;
+      @media (min-width: 0) {
+        width:90%;
+        margin: 1rem auto 0;
+      }
+      @media (min-width: 1000px) {
+        width:14.2857143%;
+        margin: 0;
+      }
+      div{
+        &:first-child{
+          margin-bottom: 0.3rem;
+          font-weight: bold;
+        }
+      }
+      .textCenter {
+        align-items: center;
+        text-align: center;
+      }
+      .allEventForOneDay {
+        margin-top: 1rem;
+        .oneEvent {
+          background-color: #3A406E;
+          color: white;
+          margin-bottom: 2px;
+          margin-left: 3px;
+          margin-right: 3px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding: 2px 2px 2px 5px;
+          border-radius: 5px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<ion-content>
+  <app-header></app-header>
+  <div class="authentication">
+
+    <div class="authenticationLeft">
+      <img src="assets/image/woman-with-laptop.svg" alt="" />
+    </div>
+
+    <div class="authenticationCenter" *ngIf="!isRegister">
+      <h2>Création de votre compte</h2>
+      <div class="form">
+        <input type="text" [(ngModel)]="firstname" placeholder="Prénom" class="inputTwoPart">
+        <input type="text" [(ngModel)]="lastname" placeholder="Nom" class="inputTwoPart">
+        <input type="text" [(ngModel)]="email" placeholder="Email" class="inputFullWidth" [disabled]="!!token">
+        <input type="password" [(ngModel)]="password" placeholder="Mot de passe" class="inputFullWidth">
+        <button (click)="handleRegisterClick()" [disabled]="checkIfEmpty()">S'incrire</button>
+      </div>
+      <div class="toConnection">
+        Vous avez déjà un compte ?&nbsp;<a [routerLink]="['/connexion']">Se Connecter</a>
+      </div>
+    </div>
+
+    <div class="authenticationCenter" *ngIf="isRegister">
+      <h2>Inscription validée</h2>
+      <div class="toConnection">
+        <a [routerLink]="['/connexion']">Se Connecter</a>
+      </div>
+    </div>
+
+    <div class="authenticationRight">
+      <img src="assets/image/man-reads-paper.svg" alt="" />
+    </div>
+
+  </div>
+  <app-footer></app-footer>
+</ion-content>

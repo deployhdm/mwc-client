@@ -1,0 +1,26 @@
+div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  img{
+    width:92px;
+    height:30px;
+    @media (min-width: 0) {
+      display: none;
+    }
+    @media (min-width: 1450px) {
+      display: block;
+    }
+  }
+  input {
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+    padding-left: 0.4rem;
+    width:60%;
+    height:35px;
+  }
+  button{
+    padding:0.4rem;
+  }
+}

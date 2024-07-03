@@ -1,0 +1,143 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  .separator {
+    min-height: 4rem;
+  }
+  .addInvitation {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 1%;
+    width: 98%;
+    border: 1px solid #3A406E;
+    border-radius: 10px;
+    h1 {
+      font-size: 1.7rem;
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 1.8rem;
+    }
+    .addForm {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      input {
+        @media (min-width: 0) {
+          width:50%;
+          margin-right: 1.5rem;
+        }
+        @media (min-width: 500px) {
+          width:50%;
+          margin-right: 2.5rem;
+        }
+        @media (min-width: 900px) {
+          width:30%;
+        }
+      }
+    }
+  }
+
+  .relationContainer {
+    display: flex;
+    @media (min-width:0) {
+      flex-direction: column;
+    }
+    @media (min-width:1000px) {
+      flex-direction: row;
+    }
+    .myRelation {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1%;
+      margin-right: 1%;
+      margin-top: 1rem;
+      @media (min-width:0) {
+        width: 98%;
+      }
+      @media (min-width:1000px) {
+        width: 48%;
+      }
+      border: 1px solid #3A406E;
+      border-radius: 10px;
+
+      h1 {
+        font-size: 1.7rem;
+        text-align: center;
+        margin-top: 0.6rem;
+        margin-bottom: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-top: 0.6rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .noRelation {
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        li {
+          list-style: none;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-bottom: 0.7rem;
+          margin-top: 0.6rem;
+
+          img {
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
+            @media (min-width:0) {
+              display: none;
+            }
+            @media (min-width:650px) {
+              display: block;
+            }
+          }
+
+          .name {
+            font-weight: bold;
+            @media (min-width:0) {
+              font-size: 0.8rem;
+              margin-left: 0.5rem;
+            }
+            @media (min-width:650px) {
+              font-size: 1rem;
+              margin-left: 0;
+            }
+          }
+
+          .email {
+            color: #3a3a3add;
+            @media (min-width:0) {
+              font-size: 0.8rem;
+              margin-left: 0.5rem;
+            }
+            @media (min-width:650px) {
+              font-size: 1rem;
+              margin-left: 0;
+            }
+          }
+
+          .menu {
+            justify-self: flex-end;
+            text-align: right;
+            flex: 1;
+            margin-right: 1rem;
+            position: relative;
+
+            div {
+              cursor: pointer;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}

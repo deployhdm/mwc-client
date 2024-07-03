@@ -1,0 +1,12 @@
+<div>
+  <div class="titleContainer">
+    <h2>BLOC-NOTES</h2>
+    <div (click)="displayScrollingMenu()">...</div>
+    <ul class="scrollingMenu" *ngIf="scrollingMenu">
+      <li (click)="makeItANote()">Transformer en notes</li>
+      <li (click)="makeEmpty()">Vider le bloc-notes</li>
+    </ul>
+  </div>
+
+  <textarea [(ngModel)]="notepadText" (ngModelChange)="changeNotepadText()"></textarea>
+</div>

@@ -1,0 +1,5 @@
+<div>
+  <img src="/assets/image/google.png" alt="google" (click)="emptySearch()" />
+  <input type="text" (keyup.enter)="loadSearch()" [(ngModel)]="search" placeholder="Recherche Google">
+  <button (click)="loadSearch()">Chercher</button>
+</div>

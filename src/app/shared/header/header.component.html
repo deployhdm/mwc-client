@@ -1,0 +1,15 @@
+<header>
+  <h1>
+    <span>My Web Companion</span>
+  </h1>
+  <div *ngIf="isConnected" class="profil">
+    <img src="/assets/image/profil.png" alt="profil" (click)="toogleProfilMenu()">
+    <ul class="scrollingMenu2" *ngIf="isProfilMenu">
+      <li (click)="profil()">Voir mon profil</li>
+      <li (click)="disconnect()">Déconnexion</li>
+    </ul>
+  </div>
+
+</header>
+
+<app-navbar></app-navbar>

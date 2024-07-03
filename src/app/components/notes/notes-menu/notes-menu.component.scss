@@ -1,0 +1,96 @@
+.notesContainer {
+  border:1px solid #3A406E ;
+  border-radius: 5px;
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
+  .notesList {
+    display: flex;
+    overflow-x: auto;
+    .noteCard {
+      position: relative;
+      min-width:200px;
+      max-width: 200px;
+      height:250px;
+      border: 1px solid #3A406E ;
+      border-radius: 5px;
+      margin-left: 1rem;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      h3 {
+        font-weight: bold;
+        margin-left: 0.3rem;
+        margin-top: 0.3rem;
+        margin-bottom: 0.4rem;
+      }
+      h4 {
+        font-weight: bold;
+        margin-left: 0.3rem;
+        margin-top: 0.3rem;
+        margin-bottom: 0.4rem;
+        text-align: center;
+      }
+      p{
+        margin-left: 0.3rem;
+      }
+      &:hover {
+        background-color: #d0d0d0;
+      }
+      &:last-child{
+        margin-right: 1rem;
+      }
+      img {
+        margin-left: 52px;
+        margin-top: 50px;
+      }
+      .permissionLevel {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        bottom: 0; 
+        right: 0;
+        color: #474747;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+    }
+    .addNoteCard {
+      min-width: 200px;
+      max-width: 200px;
+      height: 250px;
+      border: 1px solid #3A406E ;
+      border-radius: 5px;
+      margin-left: 1rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h4 {
+        font-weight: bold;
+        margin-left: 0.3rem;
+        margin-top: 0.3rem;
+        margin-bottom: 0.4rem;
+        text-align: center;
+      }
+      .inputCreate {
+        width:190px;
+        margin-left:5px;
+        margin-top: 50px;
+      }
+      .buttonCreate {
+        width:150px;
+        margin-left:5px;
+        margin-top: 60px;
+        text-align: center;
+        border-radius: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
+  }
+}

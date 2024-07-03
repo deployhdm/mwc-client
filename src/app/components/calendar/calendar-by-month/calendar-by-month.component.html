@@ -1,0 +1,15 @@
+<div class="calendarDate">
+  <ul class="dateContainer">
+    <li *ngFor="let date of monthWithEvent" class="oneDate" (click)="displayAddMenu(date)">
+      <div class="textCenter">{{date.theDay}}</div>
+      <div class="textCenter">{{date.day}} {{date.month | numberToWordMonth}}</div>
+      <div *ngIf="allPlanned" class="allEventForOneDay">
+        <ul>
+          <li *ngFor="let events of date.events" class="oneEvent" (click)="callUpdateEvent(events.id, events.dateEnding)">
+            {{events.title}}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>

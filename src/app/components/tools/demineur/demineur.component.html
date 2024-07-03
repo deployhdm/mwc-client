@@ -1,0 +1,86 @@
+<div class="modalMiddleScreen">
+  <div [class]="modal">
+    <div class="topBar">
+      <div class="menuTopBar">
+        <div [class]="optionMenuFiles">
+          <h3 class="pointer" (click)="toogleFilesMenu()">Fichier</h3>
+          <div class="filesMenu" *ngIf="filesMenu">
+            <h2>New Games :</h2>
+            <div class="pointer" (click)="chooseGame('easy')">Easy</div>
+            <div class="pointer" (click)="chooseGame('medium')">Medium</div>
+            <div class="pointer" (click)="chooseGame('hard')">Hard</div>
+          </div>
+        </div>
+
+        <div [class]="optionMenuHighScore">
+          <h3 class="pointer" (click)="toogleHighScoreMenu()">Highscore</h3>
+          <div class="filesMenu" *ngIf="highScoreMenu">
+            <h2>Personnel :</h2>
+            <div class="pointer" (click)="displayHighScore('allEasy')">Easy</div>
+            <div class="pointer" (click)="displayHighScore('allMedium')">Medium</div>
+            <div class="pointer" (click)="displayHighScore('allHard')">Hard</div>
+            <h2>Général :</h2>
+            <div class="pointer" (click)="displayHighScore('myEasy')">Easy</div>
+            <div class="pointer" (click)="displayHighScore('myMedium')">Medium</div>
+            <div class="pointer" (click)="displayHighScore('myHard')">Hard</div>
+          </div>
+        </div>
+      </div>
+      <span class="pointer" (click)="close()">X</span>
+    </div>
+    <div [class]="demineur">
+      <div class="menu">
+        <div class="numberBombRest">
+          <img [src]="numberBombRemaining | demineurNumberToImage : 'centaine'" alt="centaine">
+          <img [src]="numberBombRemaining | demineurNumberToImage : 'dizaine'" alt="dizaine">
+          <img [src]="numberBombRemaining | demineurNumberToImage : 'unite'" alt="unité">
+        </div>
+        <div class="smileys" (click)="newGame()">
+          <img [src]="smileys" alt="restart">
+        </div>
+        <div class="time">
+          <img [src]="timer | demineurNumberToImage : 'centaine'" alt="centaine">
+          <img [src]="timer | demineurNumberToImage : 'dizaine'" alt="dizaine">
+          <img [src]="timer | demineurNumberToImage : 'unite'" alt="unité">
+        </div>
+      </div>
+      <div [class]="gamePad">
+        <ul *ngIf="board">
+          <li *ngFor="let line of board; let i = index">
+            <div class="line" *ngFor="let status of board[i]; let j = index">
+              <div class="unknown pointer" *ngIf="status === 'unknown'" (contextmenu)="rightClick($event, i, j)" (click)="leftClick(i, j)"></div>
+              <div class="interrogation" *ngIf="status === 'interrogation'" (contextmenu)="rightClick($event, i, j)"></div>
+              <div class="bomb" *ngIf="status === 'bomb'"></div>
+              <div class="flag" *ngIf="status === 'flag'" (contextmenu)="rightClick($event, i, j)"></div>
+              <div class="number" *ngIf="status === 'number0'"></div>
+              <div class="number number1" *ngIf="status === 'number1'">1</div>
+              <div class="number number2" *ngIf="status === 'number2'">2</div>
+              <div class="number number3" *ngIf="status === 'number3'">3</div>
+              <div class="number number4" *ngIf="status === 'number4'">4</div>
+              <div class="number number5" *ngIf="status === 'number5'">5</div>
+              <div class="number number6" *ngIf="status === 'number6'">6</div>
+              <div class="number number7" *ngIf="status === 'number7'">7</div>
+              <div class="number number8" *ngIf="status === 'number8'">8</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modalHighScore" *ngIf="displayModalHighScore">
+  <div class="contentModalHighScore">
+    <div class="topBar">
+      <span class="pointer" (click)="closeHighScore()">X</span>
+    </div>
+    <h2>HIGH SCORES</h2>
+    <ul>
+      <li *ngFor="let infoScore of highscore; let i = index">
+        <div class="ranking">{{i + 1}})</div>
+        <div>{{infoScore.firstname}} {{infoScore.lastname}}</div>
+        <div class="score">{{infoScore.score}} secondes</div>
+      </li>
+    </ul>
+  </div>
+</div>

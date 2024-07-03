@@ -1,0 +1,322 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/* palette :
+#EDCE85 Flax
+#CA4E70 Ruber
+#3A406E American Blue
+#3793AF Steel Blue
+#6BDBCB Pearl Aqua
+ */
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, s, samp, section, small, span, strike, strong, sub, summary, sup, svg, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 62.5%;
+  font: inherit;
+  vertical-align: baseline;
+  font-weight: 400;
+  color: #3A406E;
+}
+mark {
+  background-color: transparent;
+}
+
+a {
+  color:#3793AF;
+  &:hover{
+    color:#6BDBCB;
+  }
+}
+
+//font-family: 'Dancing Script', cursive;
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.b{
+  font-weight: bold;
+}
+.pointer{
+  cursor:pointer;
+}
+
+.flex {
+  display:flex;
+}
+
+.red{
+  color:#CA4E70;
+}
+
+button {
+  background-color: #3A406E ;
+  color:#6BDBCB;
+  height:3rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  &:disabled{
+    color:#3a3a3a;
+    background-color: #3A406EAA ;
+  }
+}
+
+.scrollingMenu{
+  position:absolute;
+  right:5px;
+  top:30px;
+  padding:0.5rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px -1px 7px 0 rgba(0,0,0,0.75);
+  z-index: 1000;
+  li{
+    list-style: none;
+    margin-bottom: 0.4rem;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover {
+      background-color: #6BDBCB;
+    }
+    &:first-child {
+      margin-top: 0.4rem;
+    }
+  }
+}
+
+.scrollingMenu2{
+  position:absolute;
+  right:5px;
+  top:50px;
+  padding:0.5rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px -1px 7px 0 rgba(0,0,0,0.75);
+  z-index: 1000;
+  li{
+    list-style: none;
+    margin-bottom: 0.4rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: left;
+    &:hover {
+      background-color: #6BDBCB;
+    }
+    &:first-child {
+      margin-top: 0.4rem;
+    }
+  }
+}
+
+.alerte {
+  background-color: #3A406E99;
+  .alert-wrapper {
+    width:50%;
+    min-width: 50%;
+    max-width: 80%;
+    color:#3A406E;
+    h2 {
+      font-size: 25px;
+    }
+    .alert-message {
+      font-size: 20px;
+    }
+  }
+}
+
+input {
+  border-left: none;
+  border-top: none;
+  border-right: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+.modalFullScreen {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  z-index: 1500;
+  background-color: #3A406EAA;
+  .contentModalFullScreen{
+    margin: 3vh 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    height: 94vh;
+    border:1px solid white;
+    .topBar {
+      height: 30px;
+      line-height: 30px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: #3A406E ;
+      border-radius: 10px 10px 0 0;
+      span {
+        margin-right: 1rem;
+        color:white;
+        background-color: #3a3a3a;
+        border-radius: 50%;
+        height:20px;
+        width:20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.modalMiddleScreen {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  z-index: 1500;
+  background-color: #3A406EAA;
+  .contentModalMiddleScreen{
+    @media (min-width: 0) {
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+      margin-right: 1px;
+      margin-left: 1px;
+      height: 96vh;
+    }
+    @media (min-width: 330px) {
+      margin-top: 4vh;
+      margin-bottom: 4vh;
+      margin-right: 4%;
+      margin-left: 4%;
+      height: 92vh;
+    }
+    @media (min-width: 440px) {
+      margin-top: 8vh;
+      margin-bottom: 8vh;
+      margin-right: 8%;
+      margin-left: 8%;
+      height: 84vh;
+    }
+    @media (min-width: 740px) {
+      margin-top: 14vh;
+      margin-bottom: 14vh;
+      margin-right: 15%;
+      margin-left: 15%;
+      height: 72vh;
+    }
+    @media (min-width: 1600px) {
+      margin-top: 20vh;
+      margin-bottom: 20vh;
+      margin-right: 20%;
+      margin-left: 20%;
+      height: 60vh;
+    }
+    background-color: white;
+    border-radius: 10px;
+    border:1px solid white;
+    .topBar {
+      height: 30px;
+      line-height: 30px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: #3A406E ;
+      border-radius: 10px 10px 0 0;
+      span {
+        margin-right: 1rem;
+        color:white;
+        background-color: #3a3a3a;
+        border-radius: 50%;
+        height:20px;
+        width:20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.modalFriendsPicker {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  z-index: 5000;
+  background-color: #3A406EAA;
+  display: flex;
+  justify-content: center;
+  .contentModalFriendsPicker{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    height: 90vh;
+    width:365px;
+    background-color: white;
+    border-radius: 10px;
+    border:1px solid white;
+    .topBar {
+      height: 30px;
+      line-height: 30px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: #3A406E ;
+      border-radius: 10px 10px 0 0;
+      span {
+        margin-right: 1rem;
+        color:white;
+        background-color: #3a3a3a;
+        border-radius: 50%;
+        height:20px;
+        width:20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+
+
+
+

@@ -1,0 +1,18 @@
+<ion-content>
+  <app-header></app-header>
+
+  <div class="profilContainer">
+
+    <div class="menu">
+      <app-profil-menu (menuChosenEvent)="onMenuChosen($event)"></app-profil-menu>
+    </div>
+
+    <div class="content">
+      <app-profil-information *ngIf="menuChosen === 'information'"></app-profil-information>
+      <app-profil-relation *ngIf="menuChosen === 'relation'"></app-profil-relation>
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
+</ion-content>

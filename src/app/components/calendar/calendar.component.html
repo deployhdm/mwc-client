@@ -1,0 +1,207 @@
+<div class="menu scrollToMe">
+  <div class="leftMenu">
+    <div class="today pointer" (click)="getReturnToday()">Aujourd'hui</div>
+    <div class="navigate pointer" (click)="getPrevious()" *ngIf="displayBy!=='planning'"> < </div>
+    <div class="navigate pointer" (click)="getNext()" *ngIf="displayBy!=='planning'"> > </div>
+    <div class="navigateSmall">
+      <div class="navigate pointer" (click)="getPrevious()" *ngIf="displayBy!=='planning'"> < </div>
+      <div class="navigate pointer" (click)="getNext()" *ngIf="displayBy!=='planning'"> > </div>
+    </div>
+  </div>
+
+  <div class="centerMenu">
+    <div class="currentYear">{{currentYear}}</div>
+  </div>
+
+  <div class="rightMenu">
+    <div class="addPlan">
+      <div class="textAddPlan pointer" *ngIf="!gmailSync" (click)="displayGmailMenu()">Importer Google Calendar
+      </div>
+      <div *ngIf="gmailSync" class="importedGmail" (click)="deleteGmailSync()" title="Cliquez pour désynchroniser">
+        {{ gmailSync }}
+        <ion-icon name="close" color="danger" title="Désynchroniser Google Calendar">Google Calendar</ion-icon>
+      </div>
+    </div>
+    <div class="addPlan">
+      <div class="textAddPlan pointer" (click)="displayAddMenu()">Ajouter</div>
+    </div>
+    <div class="chooseDisplayBy">
+      <select [(ngModel)]="displayBy" (ngModelChange)="updateDisplayBy($event)">
+        <option value="day">Jour</option>
+        <option value="week">Semaine</option>
+        <option value="month">Mois</option>
+        <option value="year">Année</option>
+        <option value="planning">Planning</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div>
+  <app-calendar-by-week *ngIf="displayBy === 'week'" [week]="week"></app-calendar-by-week>
+  <app-calendar-by-day *ngIf="displayBy === 'day'" [day]="day"></app-calendar-by-day>
+  <app-calendar-by-month *ngIf="displayBy === 'month'" [month]="month"></app-calendar-by-month>
+  <app-calendar-by-year *ngIf="displayBy === 'year'" [year]="year"></app-calendar-by-year>
+  <app-calendar-by-planning *ngIf="displayBy === 'planning'"></app-calendar-by-planning>
+</div>
+
+<div class="modalMiddleScreen" *ngIf="displayScrollAddMenu">
+  <div class="contentModalMiddleScreen">
+    <div class="topBar">
+      <span class="pointer" (click)="hideAddMenu()">X</span>
+    </div>
+    <div class="titleContainer">
+      <input type="text" placeholder="Votre titre" class="title" [(ngModel)]="titleEvent">
+    </div>
+    <div class="chooseEvent" *ngIf="!isEventUpdate">
+      <div [class]="classTaskChoose" (click)="chooseAddTask()">Tâche</div>
+      <div [class]="classMeetChoose" (click)="chooseAddMeet()">Evènement</div>
+    </div>
+    <div class="dateContainer">
+      <div *ngIf="classTaskChoose === 'selected'" class="titleDateTask">Date : </div>
+      <div *ngIf="classMeetChoose === 'selected'" class="titleDateMeet">
+        <span class="longText">Date de début : </span>
+        <span class="shortText">Début : </span>
+      </div>
+      <div class="dateBeginContainer">
+        <ion-datetime-button datetime="dateBegin"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="dateBegin" firstDayOfWeek="1" [(ngModel)]="dateBegin"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+    </div>
+
+    <div class="dateContainer" *ngIf="classMeetChoose === 'selected'">
+      <div class="titleDateMeet">
+        <span class="longText">Date de fin : </span>
+        <span class="shortText">Fin : </span>
+      </div>
+
+      <div class="dateEndingContainer" *ngIf="classMeetChoose === 'selected'">
+        <ion-datetime-button datetime="dateEnding"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="dateEnding" firstDayOfWeek="1" [(ngModel)]="dateEnding"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+    </div>
+
+    <div class="locationContainer" *ngIf="classMeetChoose === 'selected'">
+      <div class="titleLocationMeet">
+        <span class="longText">Location : </span>
+      </div>
+      <form [formGroup]="meetingLocationForm" class="location-form">
+        <ion-radio-group formControlName="meetingLocationType" class="radio-group">
+          <ion-item>
+            <ion-label class="longText">Distanciel</ion-label>
+            <ion-radio slot="start" value="remote"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label class="longText">Présentiel</ion-label>
+            <ion-radio slot="start" value="onsite"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <div *ngIf="meetingLocationForm.get('meetingLocationType')?.value === 'remote'" class="inputContainer">
+          <!-- <label for="meetLink">Link du meeting :</label> -->
+          <input class="input-full" type="url" id="meetLink" formControlName="linkOrLocalisation" [placeholder]="'Lien du meeting'">
+        </div>
+        <div *ngIf="meetingLocationForm.get('meetingLocationType')?.value === 'onsite'" class="inputContainer">
+          <input class="input-full" ype="text" id="location" formControlName="linkOrLocalisation" [placeholder]="'Lieu'">
+        </div>
+      </form>
+    </div>
+
+    <div class="descriptionContainer">
+      <textarea placeholder="Ajouter une description" [(ngModel)]="descriptionEvent"></textarea>
+    </div>
+
+    <div class="recurrentContainer" *ngIf="classTaskChoose==='selected'">
+      <div>Récurrence : </div>
+      <div>
+        <select [(ngModel)]="recurrence">
+          <option value="" selected>Une seule fois</option>
+          <option value="daily">Tous les jours</option>
+          <option value="weekly">Tous les semaines</option>
+          <option value="monthly">Tous les mois</option>
+          <option value="annual">Tous les ans</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="addRelationContainer">
+      <span class="pointer flex">
+        <img src="/assets/image/add.png" alt="add">
+        <div (click)="showFriendsPicker()">Ajouter des participants</div>
+      </span>
+    </div>
+
+    <div class="relationContainer">
+      <div *ngFor="let friend of participant; let i = index" class="listParticipant">
+        <div *ngIf="friend.isChecked" class="participant">
+          {{friend.firstname}} {{friend.lastname}}
+        </div>
+      </div>
+    </div>
+
+    <div class="buttonContainer" *ngIf="!isEventUpdate">
+      <button (click)="createEvent()">Créer</button>
+    </div>
+
+    <div class="buttonContainer" *ngIf="isEventUpdate">
+      <button (click)="updateEvent()">Mettre à jour</button>
+      <button (click)="deleteEvent()" class="deleteButton">Supprimer</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="modalFriendsPicker" *ngIf="displayFriendsPicker">
+  <div class="contentModalFriendsPicker">
+    <div class="topBar">
+      <span class="pointer" (click)="hideFriendsPicker()">X</span>
+    </div>
+    <h1>Ajouter des participants</h1>
+    <ul *ngIf="relation.length > 0">
+      <li *ngFor="let friend of relation; let i = index">
+        <div>
+          <input type="checkbox" [(ngModel)]="participant[i].isChecked" [disabled]="participant[i].isCheckedBlock">
+        </div>
+        <div>
+          <img src="/assets/image/profilOld.png" alt="photo">
+        </div>
+        <div>
+          <div class="name">{{friend.firstname}} {{friend.lastname}}</div>
+          <div class="email">{{friend.email}}</div>
+        </div>
+      </li>
+    </ul>
+    <div class="noRelation" *ngIf="relation.length === 0">
+      Vous n'avez pas de relation
+    </div>
+  </div>
+</div>
+
+<div class="modalMiddleScreen" *ngIf="displayGmailInput">
+  <div class="contentModalMiddleScreen">
+    <div class="topBar">
+      <span class="pointer" (click)="hideGmailMenu()">X</span>
+    </div>
+    <form [formGroup]="gmailInput">
+      <div class="titleContainer">
+        <input type="email" placeholder="Votre adresse Gmail" class="title" [(ngModel)]="gmail" formControlName="gmail">
+      </div>
+      <div *ngIf="gmailInput.get('gmail')?.hasError('invalidGmail') && gmailInput.get('gmail')?.dirty" class="titleContainer">
+        Veuillez entrer une adresse Gmail valide.
+      </div>
+    </form>
+    <div class="buttonContainer">
+      <button (click)="initiateGoogleCalendarAddition()" [disabled]="gmailInput.invalid">Synchroniser avec Gmail</button>
+      <button (click)="hideGmailMenu()" class="deleteButton">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<br/><br/><br/><br/><br/>

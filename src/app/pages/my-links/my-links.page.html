@@ -1,0 +1,16 @@
+<ion-content>
+  <app-header></app-header>
+  <a routerLink="/home" class="goHome">Retour à l'accueil</a><br/>
+  <main>
+    <section *ngFor="let groupLinks of groupLinksList">
+      <h3>{{groupLinks.name}}</h3>
+      <ul>
+        <li *ngFor="let link of linksList | filterLinksByGroup:groupLinks.id">
+          <a href="{{link.link}}" (click)="clickOnLink(link.id)" target="_blank">{{link.name}}</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+</ion-content>

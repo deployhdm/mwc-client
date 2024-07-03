@@ -1,0 +1,21 @@
+<div class="calendarDate">
+  <ul class="titleContainer">
+    <li class="title">
+      <div>{{day.theDay}} {{day.day}} {{day.month | numberToWordMonth}} {{day.year}}</div>
+    </li>
+  </ul>
+  <ul class="dayContainer">
+    <li *ngFor="let event of planning; let i = index" [class]="eventClass(i)" (click)="callUpdateEvent(event.id, event.dateEnding)">
+      <div *ngIf="!event.dateEnding && event.dateBegin" class="date">
+        {{event.dateBegin | datePlanning : "hour"}}
+      </div>
+      <div *ngIf="event.dateEnding" class="date">
+        {{event.dateBegin | datePlanning : "hour" : event : day }}
+      </div>
+
+      <div class="title">{{event.title}}</div>
+
+      <div class="description" *ngIf="event.description">{{event.description | descriptionPlanningResume}}</div>
+    </li>
+  </ul>
+</div>

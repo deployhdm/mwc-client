@@ -1,0 +1,47 @@
+<div class="calendarDate">
+  <div class="currentYear">{{currentYear}}</div>
+  <div class="month" *ngFor="let month of year; index as i">
+    <h2>{{i+1 | numberToWordMonth}}</h2>
+    <ul class="weekDay">
+      <li *ngFor="let i of [0, 1, 2, 3, 4, 5, 6]">
+        {{month[i].theDay | wordToLetterDayOfWeek}}</li>
+    </ul>
+
+    <ul>
+      <li *ngFor="let date of month">
+        <span class="pointer date" (click)="displayOneDate(date.day, date.month, date.year, date.theDay)">{{date.day <10 ? date.day : date.day}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="modalMiddleScreen" *ngIf="displayModalDay">
+  <div class="contentModalMiddleScreen">
+    <div class="topBar">
+      <span class="pointer" (click)="hideDayModal()">X</span>
+    </div>
+    <div class="calendarDate">
+      <ul class="titleContainer">
+        <li class="title">
+          <div>{{day.theDay}} {{day.day}} {{day.month | numberToWordMonth}} {{day.year}}</div>
+        </li>
+      </ul>
+      <ul class="dayContainer">
+        <li *ngFor="let event of planning; let i = index" [class]="eventClass(i)">
+          <div *ngIf="!event.dateEnding && event.dateBegin" class="date">
+            {{event.dateBegin | datePlanning : "hour"}}
+          </div>
+          <div *ngIf="event.dateEnding" class="date">
+            du {{event.dateBegin | datePlanning : "hour"}}
+            <br/>
+            au {{event.dateEnding | datePlanning : "hour"}}
+          </div>
+
+          <div class="title">{{event.title}}</div>
+
+          <div class="description" *ngIf="event.description">{{event.description | descriptionPlanningResume}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

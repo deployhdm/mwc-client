@@ -1,0 +1,23 @@
+<nav *ngIf="!isConnected">
+  <ul class="web">
+    <li class="pointer"><a [routerLink]="['/home']">Accueil</a></li>
+    <li class="pointer"><a [routerLink]="['/about']">Pourquoi My Web Companion ?</a></li>
+    <li class="pointer"><a [routerLink]="['/inscription']">Inscription</a></li>
+    <li class="pointer"><a [routerLink]="['/connexion']">Connexion</a></li>
+  </ul>
+  <div class="phone">
+      <img src="assets/image/burger50.png" alt="menu" (click)="toggleBurgerMenu()"/>
+  </div>
+</nav>
+
+<ul class="burger" *ngIf="burgerMenu">
+  <li class="burgerMenuTitle">
+    <div class="b">My Web Companion</div>
+    <div (click)="toggleBurgerMenu()" class="b pointer">X</div>
+  </li>
+  <li></li>
+  <li class="pointer"><a [routerLink]="['/home']" (click)="toggleBurgerMenu()">Accueil</a></li>
+  <li class="pointer"><a [routerLink]="['/about']" (click)="toggleBurgerMenu()">Pourquoi My Web Companion ?</a></li>
+  <li class="pointer"><a [routerLink]="['/inscription']" (click)="toggleBurgerMenu()">Inscription</a></li>
+  <li class="pointer"><a [routerLink]="['/connexion']" (click)="toggleBurgerMenu()">Connexion</a></li>
+</ul>

@@ -1,0 +1,117 @@
+a {
+  margin-left: 1rem;
+}
+h3 {
+  margin:1rem auto;
+  width:95%;
+  font-size: 1.2rem;
+}
+
+.container {
+  display: flex;
+  // flex-direction: row;
+  margin: 1rem auto;
+  width: 95%;
+}
+
+.contentContainer {
+  flex: 1;
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.titleContainer {
+  margin:1rem auto;
+  width: 95%;
+  input {
+    width:100%;
+  }
+}
+.textContainer {
+  margin:1rem auto;
+  width: 95%;
+  textarea {
+    min-height:600px;
+    width:100%;
+  }
+}
+.share {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+
+  .inviteSomeone {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 50px;
+
+    .detailCollaborator {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      margin-top: 1rem;
+      gap: 2rem; 
+
+      // .permissionOptions select {
+      //   appearance: none; /* Remove default appearance */
+      //   padding: 0.5rem; /* Add padding */
+      //   font-size: 1rem; /* Set font size */
+      //   border: 1px solid #ccc; /* Add border */
+      //   border-radius: 4px; /* Add border radius */
+      //   background-color: #fff; /* Set background color */
+      //   color: #333; /* Set text color */
+      //   width: 100%; /* Set width */
+      // }
+
+      .permissionsOptions select option {
+        font-size: 1rem;
+      }
+    
+    }
+  
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+    }
+  }
+
+  .sharedWith {
+    display: flex;
+    flex-direction: column;
+
+    .collaborator {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+
+.deleteNote {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+  button {
+
+    font-weight: bold;
+    border:1px solid #CA4E70;
+  }
+}
+
+.shareContainer {
+  display: grid;
+  justify-content: flex-end;
+  background-color: #e7ccd3;
+  .shareItems {
+    display: flex;
+    height: 32px;
+    margin-left: 20px;
+  }
+}

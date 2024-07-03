@@ -1,0 +1,38 @@
+<div class="modalMiddleScreen">
+  <div class="contentModalMiddleScreen">
+    <div class="topBar">
+      <span class="pointer" (click)="close()">X</span>
+    </div>
+    <div class="displayScreen">
+      <div class="calculHistory">{{calculHistory}}</div>
+      <div class="result">{{result}}</div>
+    </div>
+    <ul>
+      <li (click)="touch('percentage')">%</li>
+      <li (click)="touch('CE')">CE</li>
+      <li (click)="touch('C')">C</li>
+      <li (click)="touch('delete')"><-</li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li (click)="touch('division')">/</li>
+      <li (click)="touch(7)">7</li>
+      <li (click)="touch(8)">8</li>
+      <li (click)="touch(9)">9</li>
+      <li (click)="touch('multiplication')">X</li>
+      <li (click)="touch(4)">4</li>
+      <li (click)="touch(5)">5</li>
+      <li (click)="touch(6)">6</li>
+      <li (click)="touch('substraction')">-</li>
+      <li (click)="touch(1)">1</li>
+      <li (click)="touch(2)">2</li>
+      <li (click)="touch(3)">3</li>
+      <li (click)="touch('addition')">+</li>
+      <li (click)="touch('negative')">+/-</li>
+      <li (click)="touch(0)">0</li>
+      <li (click)="touch('decimal')">,</li>
+      <li (click)="touch('equal')">=</li>
+    </ul>
+
+  </div>
+</div>

@@ -1,0 +1,162 @@
+@mixin mediaQueryWidthModal {
+  @media (min-width: 0) {
+    margin: 0 auto;
+    width: 95%;
+  }
+  @media (min-width: 500px) {
+    margin: 0 auto;
+    width: 90%;
+  }
+  @media (min-width: 1400px) {
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.modalMiddleScreen {
+  .contentModalMiddleScreen{
+    .titleContainer {
+      width:100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height:40px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      input{
+        @media (min-width: 0) {
+          margin: 0 auto;
+          width: 90%;
+        }
+        @media (min-width: 1400px) {
+          margin: 0 auto;
+          width: 80%;
+        }
+        font-size: 1.2rem;
+      }
+    }
+
+
+    .dateContainer{
+      @include mediaQueryWidthModal;
+      margin-bottom: 1rem !important;
+      display: flex;
+      align-items: center;
+      @media (min-width: 0) {
+        font-size: 0.7rem;
+      }
+      @media (min-width: 340px) {
+        font-size: 0.8rem;
+      }
+      @media (min-width: 540px) {
+        font-size: 1rem;
+      }
+      .titleDateTask {
+        @media (min-width: 0) {
+          width:40px;
+        }
+        @media (min-width: 540px) {
+          width:60px;
+        }
+      }
+      .titleDateMeet {
+        @media (min-width: 0) {
+          width:45px;
+        }
+        @media (min-width: 540px) {
+          width:120px;
+        }
+        .shortText {
+          @media (min-width: 0) {
+            display:block;
+          }
+          @media (min-width: 540px) {
+            display: none;
+          }
+        }
+        .longText {
+          @media (min-width: 0) {
+            display:none;
+          }
+          @media (min-width: 540px) {
+            display:block;
+          }
+        }
+      }
+      select{
+        @media (min-width: 0) {
+          margin-left:0.1rem;
+        }
+        @media (min-width: 340px) {
+          margin-left:0.2rem;
+        }
+
+        &:nth-child(4) {
+          @media (min-width: 0) {
+            margin-left: 10px;
+          }
+          @media (min-width: 450px) {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+    .locationContainer {
+      @include mediaQueryWidthModal;
+      margin-bottom: 1rem !important;
+      display: flex;
+      align-items: center;
+      @media (min-width: 0) {
+        font-size: 0.7rem;
+      }
+      @media (min-width: 340px) {
+        font-size: 0.8rem;
+      }
+      @media (min-width: 540px) {
+        font-size: 1rem;
+      }
+      .titleLocationMeet {
+        @media (min-width: 0) {
+          width:45px;
+        }
+        @media (min-width: 540px) {
+          width:120px;
+        }
+        .shortText {
+          @media (min-width: 0) {
+            display:block;
+          }
+          @media (min-width: 540px) {
+            display: none;
+          }
+        }
+        .longText {
+          @media (min-width: 0) {
+            display:none;
+          }
+          @media (min-width: 540px) {
+            display:block;
+          }
+        }
+      }
+      .location-form {
+        display: flex;
+        align-items: center;
+        width: 100%; 
+        .radio-group { 
+          flex: 0 0 auto;
+        }
+        .inputContainer {
+          margin-left: 10px;
+          flex: 1;
+
+          .input-full {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+
