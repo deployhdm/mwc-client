@@ -72,7 +72,7 @@
   },
   "description": "An Ionic project",
   "engines": {
-    "node": "^10.15.1",
+    "node": "^14.20.0",
     "npm": "^6.9.0"
   }
 }
